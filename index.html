@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky Notes AI</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-header">
+    <div class="app-title">SKY NOTES AI</div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-btn nav-btn-active">Hlavní stránka</a>
+      <a href="settings.html" class="nav-btn">Nastavení</a>
+      <a href="help.html" class="nav-btn">Nápověda</a>
+    </nav>
+    <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+  </div>
+
+  <!-- Permissions Modal -->
+  <div id="permissionsModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closePermissionsModal" title="Zavřít">✖</button>
+      <h3>Povolení k přístupu</h3>
+      <div class="section-title">Povolení k přístupu:</div>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="cameraPermission">
+        <span class="checkmark"></span>
+        Povolení používat kameru
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="micPermission">
+        <span class="checkmark"></span>
+        Povolení používat mikrofon
+      </label>
+    </div>
+  </div>
+
+  <!-- Main Screen -->
+  <div id="mainScreen" class="screen">
+    <div class="main-bg">
+      <img src="assets/logo.png" alt="Sky Notes AI Logo" class="main-logo" />
+      <div class="tagline">OD NOT NA PAPÍŘE K HUDBĚ V HLAVĚ</div>
+      <div class="speech-bubble">
+        Nalezená nota je: <span id="currentNote"></span>
+        <img id="noteImage" src="" alt="Note image" class="note-image" style="display:none;vertical-align:middle;margin-left:1rem;width:48px;height:48px;object-fit:contain;" />
+        <span id="detectedNote"></span>
+      </div>
+      <div class="options">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="toneCheckbox">
+          <span class="checkmark"></span>
+          Zjistit notu z tónu
+        </label>
+        <label class="custom-checkbox">
+          <input type="checkbox" id="photoCheckbox">
+          <span class="checkmark"></span>
+          Zjistit notu z fotky
+        </label>
+      </div>
+      <div id="tone-controls" class="tone-controls hidden">
+        <button id="startToneBtn" class="record-btn tone-btn">Začít nahrávat</button>
+        <button id="stopToneBtn" class="record-btn tone-btn stop-btn">Stop</button>
+        <div id="liveResult" class="live-result"></div>
+        <div id="historyTitle" class="history-title">Historie rozpoznaných not:</div>
+        <ul id="recognitionHistory" class="recognition-history"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Screen -->
+  <div id="settingsScreen" class="screen hidden">
+    <button id="backBtn" class="back-btn">←</button>
+    <div class="settings-content">
+      <h2>Nastavení</h2>
+      <div class="section-title">Povolení k přístupu:</div>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="cameraPermission">
+        <span class="checkmark"></span>
+        Povolení používat kameru
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="micPermission">
+        <span class="checkmark"></span>
+        Povolení používat mikrofon
+      </label>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/permissions.js"></script>
+  <script type="module" src="js/toneRecognition.js"></script>
+  <script>
+    // Modal logic
+    const settingsBtn = document.getElementById('settingsBtn');
+    const permissionsModal = document.getElementById('permissionsModal');
+    const closePermissionsModal = document.getElementById('closePermissionsModal');
+    settingsBtn.addEventListener('click', () => {
+      permissionsModal.classList.remove('hidden');
+    });
+    closePermissionsModal.addEventListener('click', () => {
+      permissionsModal.classList.add('hidden');
+    });
+    permissionsModal.addEventListener('click', (e) => {
+      if (e.target === permissionsModal) {
+        permissionsModal.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html> 

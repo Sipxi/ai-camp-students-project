@@ -1,0 +1,486 @@
+body {
+  background: #181c2f;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 0.5rem 1.5rem;
+  background: #232946;
+  box-shadow: 0 2px 8px rgba(35,41,70,0.08);
+}
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+.settings-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.screen {
+  display: block;
+}
+.hidden {
+  display: none !important;
+}
+
+/* Main Screen Styles */
+.main-bg {
+  min-height: calc(100vh - 70px);
+  background: url('../assets/music-bg.png') center center/cover no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2.5rem;
+  z-index: 1;
+}
+.main-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(35, 41, 70, 0.55);
+  z-index: 2;
+  pointer-events: none;
+}
+.main-bg > * {
+  position: relative;
+  z-index: 3;
+}
+.main-logo {
+  display: block;
+  margin: 0 auto 2.2rem auto;
+  width: 320px;
+  max-width: 95vw;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  background: #fff;
+  object-fit: contain;
+}
+.tagline {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 0.85;
+  margin-top: -1.5rem;
+}
+.speech-bubble {
+  background: rgba(180, 120, 150, 0.85);
+  color: #fff;
+  border-radius: 18px 18px 18px 8px;
+  padding: 1.2rem 2rem;
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  position: relative;
+  min-width: 220px;
+}
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  bottom: -18px;
+  width: 0;
+  height: 0;
+  border-top: 18px solid rgba(180, 120, 150, 0.85);
+  border-right: 18px solid transparent;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+  align-items: flex-start;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  color: #fff;
+  opacity: 1;
+}
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  height: 22px;
+  width: 22px;
+  background-color: #232946;
+  border: 2px solid #3f8efc;
+  border-radius: 6px;
+  margin-right: 0.8rem;
+  display: inline-block;
+  position: relative;
+  transition: background 0.2s;
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #3f8efc;
+}
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.custom-checkbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.record-btn {
+  background: #e53935;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 1.1rem 2.5rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  transition: background 0.2s;
+}
+.record-btn:hover {
+  background: #b71c1c;
+}
+
+/* Settings Screen Styles */
+#settingsScreen {
+  background: #fff;
+  color: #232946;
+  min-height: calc(100vh - 70px);
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.settings-content {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+#settingsScreen h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  margin-top: 0.5rem;
+}
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+#settingsScreen .custom-checkbox {
+  color: #232946;
+}
+#settingsScreen .checkmark {
+  background: #fff;
+  border: 2px solid #3f8efc;
+}
+#settingsScreen .custom-checkbox input:checked ~ .checkmark {
+  background: #3f8efc;
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: #232946;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.tone-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.tone-btn {
+  width: 120px;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  font-size: 1.1rem;
+  background: #3f8efc;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 0.7rem 0;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.tone-btn:disabled {
+  background: #b0b8d1;
+  color: #fff;
+  cursor: not-allowed;
+}
+.stop-btn {
+  background: #e53935;
+}
+.live-result {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3f8efc;
+  margin: 0.5rem 0 0.5rem 0;
+  min-height: 1.5em;
+}
+.history-title {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+  text-align: center;
+}
+.recognition-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  width: 100%;
+  background: rgba(35,41,70,0.10);
+  border-radius: 8px;
+}
+.recognition-history li {
+  padding: 0.3rem 0.7rem;
+  border-bottom: 1px solid #3f8efc22;
+  font-size: 1rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recognition-history li:last-child {
+  border-bottom: none;
+}
+.detected-label {
+  color: #3f8efc;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+.score {
+  color: #b0b8d1;
+  font-size: 0.95em;
+  margin-left: 0.5rem;
+}
+.time {
+  color: #fff8;
+  font-size: 0.9em;
+  margin-left: 0.7rem;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.4rem 1.1rem;
+  border-radius: 8px;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
+  outline: none;
+  margin-left: 0.2rem;
+}
+.nav-btn:hover {
+  background: #3f8efc22;
+  color: #3f8efc;
+}
+.nav-btn-active {
+  background: #3f8efc;
+  color: #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(35,41,70,0.65);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+.modal-content {
+  background: #fff;
+  color: #232946;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  min-width: 320px;
+  max-width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+.modal-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  background: none;
+  border: none;
+  color: #232946;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.18s;
+}
+.modal-close:hover {
+  opacity: 1;
+}
+.modal h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #232946;
+}
+.modal .section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: #232946;
+}
+.modal .custom-checkbox {
+  color: #232946;
+  font-size: 1.05rem;
+}
+.modal .checkmark {
+  background: #fff;
+  border: 2px solid #3f8efc;
+}
+.modal .custom-checkbox input:checked ~ .checkmark {
+  background: #3f8efc;
+}
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem 0.3rem 0.5rem;
+  }
+  .main-bg, #settingsScreen {
+    padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+  }
+  .main-logo {
+    width: 90vw;
+    max-width: 95vw;
+    margin-bottom: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  .tagline {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    margin-top: -0.7rem;
+  }
+  .speech-bubble {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.7rem;
+    min-width: 100px;
+    max-width: 95vw;
+    margin-bottom: 1.2rem;
+  }
+  .record-btn {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.2rem;
+    margin-top: 1rem;
+  }
+  .options {
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  .settings-content {
+    max-width: 100%;
+    gap: 1.2rem;
+  }
+  #settingsScreen h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .custom-checkbox {
+    font-size: 0.98rem;
+  }
+  .tone-controls {
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .tone-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+  .live-result {
+    font-size: 1rem;
+  }
+  .recognition-history li {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.3rem;
+  }
+  .main-nav {
+    gap: 0.3rem;
+  }
+  .nav-btn {
+    font-size: 0.98rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .modal-content {
+    padding: 1.1rem 0.7rem 1rem 0.7rem;
+    min-width: 0;
+    max-width: 99vw;
+  }
+  .modal h3 {
+    font-size: 1.05rem;
+  }
+} 
