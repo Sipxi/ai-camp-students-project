@@ -15,7 +15,7 @@
       <a href="help.html" class="nav-btn">Nápověda</a>
       <a href="aboutus.html" class="nav-btn">O nás</a>
     </nav>
-    <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+    <button id="settingsBtn" class="settings-btn" title="Nastavení">⚙️</button>
   </div>
   <div class="main-bg" style="min-height:calc(100vh - 70px);display:flex;align-items:center;justify-content:center;">
     <div style="background:#5dcbec;color:#232946;padding:2rem 2.5rem;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.10);max-width:500px;width:100%;text-align:center;">
@@ -28,5 +28,40 @@
       <p style="margin-top:1.2rem;font-size:0.98em;color:#3c883c;">Děkujeme za podporu naší cesty!</p>
     </div>
   </div>
+  <!-- Permissions Modal -->
+  <div id="permissionsModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closePermissionsModal" title="Zavřít">✖</button>
+      <h3>Povolení k přístupu</h3>
+      <div class="section-title">Povolení k přístupu:</div>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="cameraPermission">
+        <span class="checkmark"></span>
+        Povolit použití kamery
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="micPermission">
+        <span class="checkmark"></span>
+        Povolit použití mikrofonu
+      </label>
+    </div>
+  </div>
+  <script>
+    // Modal logic
+    const settingsBtn = document.getElementById('settingsBtn');
+    const permissionsModal = document.getElementById('permissionsModal');
+    const closePermissionsModal = document.getElementById('closePermissionsModal');
+    settingsBtn.addEventListener('click', () => {
+      permissionsModal.classList.remove('hidden');
+    });
+    closePermissionsModal.addEventListener('click', () => {
+      permissionsModal.classList.add('hidden');
+    });
+    permissionsModal.addEventListener('click', (e) => {
+      if (e.target === permissionsModal) {
+        permissionsModal.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html> 

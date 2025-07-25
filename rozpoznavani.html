@@ -62,17 +62,29 @@
         <button id="startToneBtn" class="record-btn tone-btn">Začít nahrávat</button>
         <button id="stopToneBtn" class="record-btn tone-btn stop-btn">Stop</button>
         <div id="liveResult" class="live-result"></div>
-        <div id="historyTitle" class="history-title">Historie rozpoznaných not:</div>
-        <ul id="recognitionHistory" class="recognition-history"></ul>
       </div>
+      <div id="photo-controls" class="tone-controls hidden">
+        <input type="file" id="photoInput" accept="image/*" style="margin-bottom:1rem;">
+        <button id="startPhotoBtn" class="record-btn tone-btn">Rozpoznat z obrázku</button>
+        <button id="webcamToggleBtn" class="record-btn tone-btn" style="margin-left:1rem;">Použít webkameru</button>
+        <div id="webcamArea" style="display:none;flex-direction:column;align-items:center;margin-top:1rem;">
+          <video id="photoWebcam" width="200" height="200" autoplay playsinline style="border-radius:8px;border:1px solid #ccc;"></video>
+          <button id="webcamCaptureBtn" class="record-btn tone-btn" style="margin-top:0.5rem;">Rozpoznat z webkamery</button>
+        </div>
+        <div id="photoResult" class="live-result"></div>
+      </div>
+      <div id="historyTitle" class="history-title">Historie rozpoznaných not:</div>
+      <ul id="recognitionHistory" class="recognition-history"></ul>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
-  <script type="module" src="js/navigation.js"></script>
-  <script type="module" src="js/permissions.js"></script>
-  <script type="module" src="js/toneRecognition.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script src="js/navigation.js" type="module"></script>
+  <script src="js/permissions.js" type="module"></script>
+  <script src="js/toneRecognition.js" type="module"></script>
+  <script src="js/photoRecognition.js" type="module"></script>
   <script>
     // Modal logic
     const settingsBtn = document.getElementById('settingsBtn');
