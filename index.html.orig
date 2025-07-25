@@ -12,23 +12,11 @@
     <nav class="main-nav">
       <a href="index.html" class="nav-btn nav-btn-active">Domů</a>
       <a href="rozpoznavani.html" class="nav-btn">Rozpoznávání</a>
+      <a href="settings.html" class="nav-btn">Nastavení</a>
       <a href="help.html" class="nav-btn">Nápověda</a>
       <a href="aboutus.html" class="nav-btn">O nás</a>
     </nav>
     <button id="settingsBtn" class="settings-btn" title="Nastavení">⚙️</button>
-  </div>
-
-  <div class="main-bg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 70px);">
-    <img src="assets/logo.png" alt="Sky Notes AI Logo" class="main-logo" style="margin-bottom:2.5rem;" />
-    <div class="tagline" style="font-size:2rem;margin-bottom:1.5rem;">OD NOT NA PAPÍŘE K HUDBĚ V HLAVĚ</div>
-    <div style="max-width:600px;text-align:center;color:#fff;opacity:0.95;font-size:1.2rem;margin-bottom:2.5rem;">
-      Sky Notes AI je moderní webová aplikace, která vám pomůže rozpoznat hudební noty podle zvuku. Vyzkoušejte rozpoznávání tónů, prohlédněte si historii, nebo si přečtěte nápovědu.
-    </div>
-    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;">
-      <a href="rozpoznavani.html" class="main-nav-btn">Rozpoznávání</a>
-      <a href="help.html" class="main-nav-btn">Nápověda</a>
-      <a href="settings.html" class="main-nav-btn">Nastavení</a>
-    </div>
   </div>
 
   <!-- Permissions Modal -->
@@ -47,6 +35,19 @@
         <span class="checkmark"></span>
         Povolit použití mikrofonu
       </label>
+    </div>
+  </div>
+
+  <div class="main-bg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 70px);">
+    <img src="assets/logo.png" alt="Sky Notes AI Logo" class="main-logo" style="margin-bottom:2.5rem;" />
+    <div class="tagline" style="font-size:2rem;margin-bottom:1.5rem;">OD NOT NA PAPÍŘE K HUDBĚ V HLAVĚ</div>
+    <div style="max-width:600px;text-align:center;color:#fff;opacity:0.95;font-size:1.2rem;margin-bottom:2.5rem;">
+      Sky Notes AI je moderní webová aplikace, která vám pomůže rozpoznat hudební noty podle zvuku. Vyzkoušejte rozpoznávání tónů, prohlédněte si historii, nebo si přečtěte nápovědu.
+    </div>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;">
+      <a href="rozpoznavani.html" class="main-nav-btn">Rozpoznávání</a>
+      <a href="help.html" class="main-nav-btn">Nápověda</a>
+      <a href="settings.html" class="main-nav-btn">Nastavení</a>
     </div>
   </div>
 

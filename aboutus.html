@@ -10,10 +10,12 @@
   <div class="app-header">
     <div class="app-title">SKY NOTES AI</div>
     <nav class="main-nav">
-      <a href="index.html" class="nav-btn">Hlavní stránka</a>
+      <a href="index.html" class="nav-btn nav-btn-active">Domů</a>
+      <a href="rozpoznavani.html" class="nav-btn">Rozpoznávání</a>
       <a href="help.html" class="nav-btn">Nápověda</a>
-      <a href="aboutus.html" class="nav-btn nav-btn-active">About Us</a>
+      <a href="aboutus.html" class="nav-btn">O nás</a>
     </nav>
+    <button id="settingsBtn" class="settings-btn" title="Nastavení">⚙️</button>
   </div>
   <div class="main-bg" style="min-height:calc(100vh - 70px);display:flex;align-items:center;justify-content:center;">
     <div style="background:#5dcbec;color:#232946;padding:2rem 2.5rem;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.10);max-width:500px;width:100%;text-align:center;">
@@ -23,8 +25,66 @@
       <h3>Jak funguje Sky Notes AI?</h3>
       <p><b>Rozpoznání not ze zvuku:</b> Stačí zazpívat nebo zahrát notu a naše AI přes mikrofon zjistí, o jakou notu se jedná. Skvělé pro procvičování nástroje nebo hlasu.</p>
       <p><b>Rozpoznání not z papíru:</b> Sky Notes AI umí také rozpoznat noty z notového zápisu nebo fotografie not. Stačí nahrát nebo vyfotit obrázek a aplikace analyzuje, jaké noty se na něm nachází.</p>
-      <p style="margin-top:1.2rem;font-size:0.98em;color:#3c883c;">Děkujeme za podporu naší cesty!</p>
+
+      <div class="team-photos" style="display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin-top:2.2rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="assets/1.png" alt="Team member 1" style="width:150px;height:150px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);background:#fff;" />
+          <span style="margin-top:0.5em;font-size:1em;color:#232946;">Zuzana Kurečková, hraju na klavír a běhám orientační běh, se ségrou jsme dělali prezentace a komletovali jsme projekt.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="assets/2.png" alt="Team member 2" style="width:150px;height:150px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);background:#fff;" />
+          <span style="margin-top:0.5em;font-size:1em;color:#232946;">Aneta Kurečková, 8 let hraju na klavír a jsem organizátorka, se ségrou jsme dělali prezentace a canvas.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="assets/3.png" alt="Team member 3" style="width:150px;height:150px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);background:#fff;" />
+          <span style="margin-top:0.5em;font-size:1em;color:#232946;">Ahoj jsem Martin Štork je mi 13 a hraju fotbal.Na tomhle projektu jsem dělal naši reklamu a program na rozpoznávání not.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="assets/4.png" alt="Team member 4" style="width:150px;height:150px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);background:#fff;" />
+          <span style="margin-top:0.5em;font-size:1em;color:#232946;">Petr Zelinka, hraju tenis a volejbal a dělal jsem design této stránky a pomáhal s programováním. </span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="assets/5.png" alt="Team member 5" style="width:150px;height:150px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);background:#fff;" />
+          <span style="margin-top:0.5em;font-size:1em;color:#232946;">Petr Skřivánek, hraju na klávesy a dělal jsem webovou stránku</span>
+         <p style="margin-top:1.2rem;font-size:0.98em;color:#3c883c;">Děkujeme za podporu naší cesty!</p>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- Permissions Modal -->
+  <div id="permissionsModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closePermissionsModal" title="Zavřít">✖</button>
+      <h3>Povolení k přístupu</h3>
+      <div class="section-title">Povolení k přístupu:</div>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="cameraPermission">
+        <span class="checkmark"></span>
+        Povolit použití kamery
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="micPermission">
+        <span class="checkmark"></span>
+        Povolit použití mikrofonu
+      </label>
+    </div>
+  </div>
+  <script>
+    // Modal logic
+    const settingsBtn = document.getElementById('settingsBtn');
+    const permissionsModal = document.getElementById('permissionsModal');
+    const closePermissionsModal = document.getElementById('closePermissionsModal');
+    settingsBtn.addEventListener('click', () => {
+      permissionsModal.classList.remove('hidden');
+    });
+    closePermissionsModal.addEventListener('click', () => {
+      permissionsModal.classList.add('hidden');
+    });
+    permissionsModal.addEventListener('click', (e) => {
+      if (e.target === permissionsModal) {
+        permissionsModal.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html> 
