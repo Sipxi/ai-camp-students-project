@@ -2,14 +2,16 @@
 import {
   toneCheckbox, toneControls, startToneBtn, stopToneBtn, liveResult, recognitionHistory, historyTitle, currentNote, noteImage
 } from './dom.js';
-import { MODEL_URL } from './config.js';
+
+// Use the new Teachable Machine model URL
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/vLKw1-wxt/";
 
 let recognizer = null;
 let classLabels = [];
 let listening = false;
 let history = [];
 
-const NOTE_LABELS = ['c','d','e','f','g','a','h','C','D','E','F','G','A','H'];
+const NOTE_LABELS = ['c','d','e','f','g','a','b'];
 
 function getNoteImageSrc(label) {
   // Always use lowercase for file names
@@ -59,7 +61,7 @@ async function startRecognition() {
       noteImage.alt = '';
     }
   }, {
-    includeSpectrogram: false,
+    includeSpectrogram: true, // changed to true for your model
     probabilityThreshold: 0.75,
     invokeCallbackOnNoiseAndUnknown: true,
     overlapFactor: 0.50
@@ -85,11 +87,17 @@ function updateHistory() {
   });
 }
 
+export { history, updateHistory };
+
 startToneBtn.addEventListener('click', startRecognition);
 stopToneBtn.addEventListener('click', stopRecognition);
 stopToneBtn.disabled = true;
 
+console.log("toneCheckbox:", toneCheckbox);
+console.log("toneControls:", toneControls);
+
 toneCheckbox.addEventListener('change', function() {
+  console.log("Checkbox changed!", this.checked);
   if (this.checked) {
     toneControls.classList.remove('hidden');
   } else {
