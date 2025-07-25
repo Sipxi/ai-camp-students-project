@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sky Notes AI</title>
+  <title>Rozpoznávání | Sky Notes AI</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="app-header">
     <div class="app-title">SKY NOTES AI</div>
     <nav class="main-nav">
-<<<<<<< HEAD
-      <a href="index.html" class="nav-btn nav-btn-active">Hlavní stránka</a>
-=======
-      <a href="index.html" class="nav-btn nav-btn-active">Domů</a>
-      <a href="rozpoznavani.html" class="nav-btn">Rozpoznávání</a>
+      <a href="index.html" class="nav-btn">Domů</a>
+      <a href="rozpoznavani.html" class="nav-btn nav-btn-active">Rozpoznávání</a>
       <a href="settings.html" class="nav-btn">Nastavení</a>
->>>>>>> 264e89e1671517e2233a1a8d5c343b7c33d6a5a5
       <a href="help.html" class="nav-btn">Nápověda</a>
-      <a href="aboutus.html" class="nav-btn">O nás</a>
     </nav>
-    <button id="settingsBtn" class="settings-btn" title="Nastavení">⚙️</button>
+    <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
   </div>
 
   <!-- Permissions Modal -->
@@ -32,25 +27,23 @@
       <label class="custom-checkbox">
         <input type="checkbox" id="cameraPermission">
         <span class="checkmark"></span>
-        Povolit použití kamery
+        Povolení používat kameru
       </label>
       <label class="custom-checkbox">
         <input type="checkbox" id="micPermission">
         <span class="checkmark"></span>
-        Povolit použití mikrofonu
+        Povolení používat mikrofon
       </label>
     </div>
   </div>
 
-<<<<<<< HEAD
-  <!-- Main Screen -->
   <div id="mainScreen" class="screen">
     <div class="main-bg">
-      <img src="assets/logo.png" alt="Logo Sky Notes AI" class="main-logo" />
+      <img src="assets/logo.png" alt="Sky Notes AI Logo" class="main-logo" />
       <div class="tagline">OD NOT NA PAPÍŘE K HUDBĚ V HLAVĚ</div>
       <div class="speech-bubble">
         Nalezená nota je: <span id="currentNote"></span>
-        <img id="noteImage" src="" alt="Obrázek noty" class="note-image" style="display:none;vertical-align:middle;margin-left:1rem;width:48px;height:48px;object-fit:contain;" />
+        <img id="noteImage" src="" alt="Note image" class="note-image" style="display:none;vertical-align:middle;margin-left:1rem;width:48px;height:48px;object-fit:contain;" />
         <span id="detectedNote"></span>
       </div>
       <div class="options">
@@ -62,7 +55,7 @@
         <label class="custom-checkbox">
           <input type="checkbox" id="photoCheckbox">
           <span class="checkmark"></span>
-          Zjistit notu z papíru
+          Zjistit notu z fotky
         </label>
       </div>
       <div id="tone-controls" class="tone-controls hidden">
@@ -75,41 +68,11 @@
     </div>
   </div>
 
-  <!-- Settings Screen -->
-  <div id="settingsScreen" class="screen hidden">
-    <button id="backBtn" class="back-btn">←</button>
-    <div class="settings-content">
-      <h2>Nastavení</h2>
-      <div class="section-title">Povolení k přístupu:</div>
-      <label class="custom-checkbox">
-        <input type="checkbox" id="cameraPermission">
-        <span class="checkmark"></span>
-        Povolit použití kamery
-      </label>
-      <label class="custom-checkbox">
-        <input type="checkbox" id="micPermission">
-        <span class="checkmark"></span>
-        Povolit použití mikrofonu
-      </label>
-=======
-  <div class="main-bg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 70px);">
-    <img src="assets/logo.png" alt="Sky Notes AI Logo" class="main-logo" style="margin-bottom:2.5rem;" />
-    <div class="tagline" style="font-size:2rem;margin-bottom:1.5rem;">OD NOT NA PAPÍŘE K HUDBĚ V HLAVĚ</div>
-    <div style="max-width:600px;text-align:center;color:#fff;opacity:0.95;font-size:1.2rem;margin-bottom:2.5rem;">
-      Sky Notes AI je moderní webová aplikace, která vám pomůže rozpoznat hudební noty podle zvuku. Vyzkoušejte rozpoznávání tónů, prohlédněte si historii, nebo si přečtěte nápovědu.
-    </div>
-    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;">
-      <a href="rozpoznavani.html" class="main-nav-btn">Rozpoznávání</a>
-      <a href="help.html" class="main-nav-btn">Nápověda</a>
-      <a href="settings.html" class="main-nav-btn">Nastavení</a>
->>>>>>> 264e89e1671517e2233a1a8d5c343b7c33d6a5a5
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
   <script type="module" src="js/navigation.js"></script>
   <script type="module" src="js/permissions.js"></script>
+  <script type="module" src="js/toneRecognition.js"></script>
   <script>
     // Modal logic
     const settingsBtn = document.getElementById('settingsBtn');
