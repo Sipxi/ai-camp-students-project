@@ -400,6 +400,27 @@ body {
 .modal .custom-checkbox input:checked ~ .checkmark {
   background: #3f8efc;
 }
+.main-nav-btn {
+  display: inline-block;
+  background: #3f8efc;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1.1rem 2.7rem;
+  border-radius: 14px;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+  border: none;
+  outline: none;
+}
+.main-nav-btn:hover, .main-nav-btn:focus {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  text-decoration: none;
+}
 @media (max-width: 600px) {
   .app-header {
     flex-direction: column;
@@ -482,5 +503,10 @@ body {
   }
   .modal h3 {
     font-size: 1.05rem;
+  }
+  .main-nav-btn {
+    font-size: 1.05rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
   }
 } 
